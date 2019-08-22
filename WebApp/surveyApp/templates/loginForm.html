@@ -23,7 +23,7 @@
                         <span class="desc-form">I am registered:</span>
                         <h2 class="title-form">Log In</h2>
                         <!--Start Form-->
-                        <form class="login" action="{% url 'loginAuth' %}" method="POST">{% csrf_token %}
+                        <form class="login" action="{% url 'loginAuth' %}" method="POST">
                             <div class="input-container">
                                 <input name="username" id="emai" placeholder="Username" required="required" />
                                 <label for="emai">Username</label>
@@ -53,8 +53,7 @@
                         <span class="desc-form">Not registered:</span>
                         <h2 class="title-form">Sign up</h2>
                         <!--Start Form-->
-                        <form class="signup" action="" method="POST">{% csrf_token %}
-
+                        <form class="signup" action="" method="POST">
                             <div class="input-container">
                                 <input type="text" name="fullname" id="fullname" autocomplete="off" placeholder="Full Name" required="required" />
                                 <label for="fullname">Full Name</label>
