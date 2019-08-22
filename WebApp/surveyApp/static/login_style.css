@@ -4,6 +4,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+    background-color: cornflowerblue;
 }
 
 
@@ -13,7 +14,7 @@ body {
 /*Start Forms*/
 
 .forms {
-    background: #fff;
+    background: #f7f7f7;
     padding: 20px;
     margin: 100px auto;
     color: #b7afaf;
@@ -28,12 +29,10 @@ body {
 .forms .form-signup {
     position: relative;
     padding: 30px;
-    color: #b7afaf;
 }
 
 .forms .form-login:after {
     content: "";
-    border: 1px solid #f7f7f7;
     height: 80%;
     position: absolute;
     top: 114px;
@@ -61,6 +60,7 @@ body {
     width: 100%;
     display: block;
     padding: 10px;
+    color: black;
     border: 1px solid #CCC;
 }
 
