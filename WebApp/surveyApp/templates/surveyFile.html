@@ -1,14 +1,64 @@
 <html>
 
 <head>
-    <link rel="stylesheet" src="../static/logout_button.css">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" src="../static/survey_style.css">
 </head>
 
 <body>
-    Hey <strong>{{ username }}!</strong>
-    <pre>
-        <a href="{% url 'loginForm' %}" method = "POST">Log Out</a> 
-    </pre>
-</body>
+    <div class="container" style="margin-left: 10%; border: 0px solid black; margin-top: 5%; width: 75%; background-color: thistle; box-shadow: 2px ">
+        <div class="container" style="width: inherit">
+            <h1 style="text-align: center"> Survey </h1>
+        </div>
+        <div id="exTab3" class="container" style="width: inherit; margin: 2%; border: 0px; box-align: center">
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item active">
+                    <a href="#1b" data-toggle="tab">Question 1</a>
+                </li>
+                <li class="nav-item"><a href="#2b" data-toggle="tab">Question 2</a>
+                </li>
+                <li class="nav-item"><a href="#3b" data-toggle="tab">Question 3</a>
+                </li>
+                <li class="nav-item"><a href="#4b" data-toggle="tab">Question 4</a>
+                </li>
+                <li class="nav-item"><a href="#5b" data-toggle="tab">Question 5</a>
+                </li>
+            </ul>
+
+            <div class="tab-content clearfix">
+                <div class="tab-pane active" id="1b">
+                    <h3>Plis copy Question 1</h3>
+                    <div class="container-fluid">
+                        <div class="list-group" style="width: inherit">
+                            <button type="button" class="list-group-item list-group-item-action" style="width: 50%">Blah Blah Blah</button>
+                            <button type="button" class="list-group-item list-group-item-action" style="width: 50%">Blah Blah Blah Blah</button>
+                            <button type="button" class="list-group-item list-group-item-action" style="width: 50%">Blah Blah </button>
+                            <button type="button" class="list-group-item list-group-item-action" style="width: 50%">Please add a good background smh </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="2b">
+                    <h3>Copy Question 1</h3>
+                </div>
+                <div class="tab-pane" id="3b">
+                    <h3>Hahhahahahaha</h3>
+                </div>
+                <div class="tab-pane" id="4b">
+                    <h3>Did you copy question 1</h3>
+                </div>
+                <div class="tab-pane" id="5b">
+                    <h3>KthxBye</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block" type="submit" style="margin-top: 5%; width: 50%; margin-left: 25%">Subit responses</button>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </html>
