@@ -1,15 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans');
 body {
-    padding: 10px;
-    background-color: cornflowerblue;
+    height: 100%;
+    width: 100%;
+    background: cornflowerblue !important;
 }
 
-#exTab3 .nav-pills>li>a {
-    border-radius: 4px 4px 0 0;
+#submitButton {
     background-color: cornflowerblue;
-}
-
-#exTab3 .tab-content {
     color: white;
-    background-color: cornflowerblue;
-    padding: 5px 15px;
+    border: 2px solid white;
+}
+
+#submitButton:hover {
+    background-color: white;
+    color: cornflowerblue;
 }

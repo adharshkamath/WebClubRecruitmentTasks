@@ -4,7 +4,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    background-color: cornflowerblue;
+    background: #f7f7f7;
 }
 
 
@@ -14,10 +14,10 @@ body {
 /*Start Forms*/
 
 .forms {
-    background: #f7f7f7;
+    background: #ffffff;
     padding: 20px;
     margin: 100px auto;
-    color: #b7afaf;
+    color: #ffffff;
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, .7);
 }
 
