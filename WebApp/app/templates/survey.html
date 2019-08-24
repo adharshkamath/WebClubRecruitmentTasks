@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" src="../static/survey.css">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            
+        }
+        .nav-pills>li.active>a,
+        .nav-pills>li.active>a:hover,
+        .nav-pills>li.active>a:focus {
+            background-color: #6930f6;
+            color: white;
+        }
+        
+        a,
+        a:hover {
+            color: #6930f6;
+        }
+
+    </style>
+    <script type="text/javascript">
+        //document.getElementsByClassName('tab-pane active fade').style.display = 'none';
+    </script>
+</head>
+
+<body class='bg'>
+    <div style=" margin-top: 5%; margin-left: 20%;overflow-x: auto; word-wrap:break-word;box-shadow: 10px 10px 10px 8px #888888; width: 60%;opacity: 1;background-color: #fff";>
+        <div class="container-fluid" style="width: 100%">
+            <div class="page-header" style="width: 100%">
+                <span style="text-align: center"><h1>Quick Survey</h1></span>
+            </div>
+            <div class="container-fluid" style="margin: 2%">
+                <ul class="nav nav-pills nav-fill" style="padding: 1%">
+                    {% for question in Data %}
+                    {% if loop.first %}
+                    <li class="nav-item active">
+                            <a href= '{{ "#" + question["Question_ID"] }}' data-toggle="tab">Question {{ loop.index }}</a>
+                        </li>
+                    {% else %}
+                    <li class="nav-item">
+                            <a href= '{{ "#" + question["Question_ID"] }}' data-toggle="tab">Question {{ loop.index }}</a>
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <hr>
+            <div class="tab-content clearfix" style="margin:2%; text-align: left;text-overflow:ellipsis">
+                {% for question in Data %}
+                {% if loop.first %}
+                <div class="tab-pane fade active in" id="{{ question['Question_ID'] }}">
+                        <h3> {{ question["Question_Text"]|e }} </h3>
+                        <div class="list-group" style="width: inherit">
+                            {% for choice in question['Choices'] %}
+                            <button type="button" id= "{{ loop.index }}" class="list-group-item list-group-item-action" style="width: 50%; word-wrap: break; border: 1px solid #fff; background-color: #6930f6;color: #fff;opacity: 0.7;">
+                            {{ choice['Choice_Text'] }}
+                            </button>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                <div class="tab-pane fade" id="{{ question['Question_ID'] }}">
+                    <h3> {{ question["Question_Text"]|e }} </h3>
+                    <div class="list-group" style="width: inherit">
+                        {% for choice in question['Choices'] %}
+                        <button type="button" id= "{{ loop.index }}" class="list-group-item list-group-item-action" style="width: 50%; word-wrap: break; border: 1px solid #fff; background-color: #6930f6;color: #fff;opacity: 0.7;">
+                        {{ choice['Choice_Text'] }}
+                        </button>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+
+
+        <div class="container-fluid"  style="text-align: center">
+            <form action={{ url_for('results') }} method="POST">
+            <button id="submitButton" class="btn btn-primary" type="submit" style="height: inherit;margin-block-end: 5%;margin-inline-end: 10%; background-color: #6930f6;display: inline-block;">
+       <h4 style="font-family: 'Courier New', Courier, monospace; padding: 2%; margin: 0%; border:0px; font-weight: 700; color: white;">Submit responses</h3>
+    </button> </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+</body>
+
+</html>

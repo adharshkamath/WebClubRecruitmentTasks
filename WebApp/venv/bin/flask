@@ -1,4 +1,4 @@
-#!/home/adharsh/Desktop/WebApp/venv/bin/python3
+#!/home/adharsh/Desktop/WebSurvey/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

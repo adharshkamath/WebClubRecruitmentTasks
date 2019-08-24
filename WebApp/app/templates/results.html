@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Responses</title>
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" src="../static/survey_style.css">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .nav-pills>li.active>a,
+        .nav-pills>li.active>a:hover,
+        .nav-pills>li.active>a:focus {
+            background-color: #6930f6;
+            color: white;
+        }
+        
+        a,
+        a:hover {
+            color: #6930f6;
+        }
+
+    </style>
+    <script type="text/javascript">
+        //document.getElementsByClassName('tab-pane active fade').style.display = 'none';
+    </script>
+</head>
+
+<body style="background: #f7f7f7;">
+    <div style=" margin-top: 5%; margin-left: 20%;overflow-x: auto; word-wrap:break-word;box-shadow: 10px 10px 10px 8px #888888; width: 60%">
+        <div class="container-fluid" style="width: 100%">
+            <div class="page-header" style="width: 100%">
+                <span style="text-align: center"><h1>Responses</h1></span>
+            </div>
+            <div class="container-fluid" style="margin: 2%">
+                <ul class="nav nav-pills nav-fill" style="padding: 1%">
+                    {% for question in Data %}
+                    {% if loop.first %}
+                    <li class="nav-item active">
+                            <a href= '{{ "#" + question["Question_ID"] }}' data-toggle="tab">Question {{ loop.index }}</a>
+                        </li>
+                    {% else %}
+                    <li class="nav-item">
+                            <a href= '{{ "#" + question["Question_ID"] }}' data-toggle="tab">Question {{ loop.index }}</a>
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <hr>
+            <div class="tab-content clearfix" style="margin:2%; text-align: left;text-overflow:ellipsis">
+                {% for question in Data %}
+                {% if loop.first %}
+                <div class="tab-pane fade active in" id="{{ question['Question_ID'] }}">
+                        <h3> {{ question["Question_Text"]|e }} </h3>
+                        <div class="list-group" style="width: inherit">
+                            {% for choice in question['Choices'] %}
+                            <div class="progress" style="height:auto;">
+                                    <div class="progress-bar bg-*" style="width:40%;padding: 1%;border-radius: 5%;background-color: #6930f6"><h5>{{ choice['Choice_Text'] }} </h5></div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                <div class="tab-pane fade" id="{{ question['Question_ID'] }}">
+                    <h3> {{ question["Question_Text"]|e }} </h3>
+                    <div class="list-group" style="width: inherit">
+                        {% for choice in question['Choices'] %}
+                        <div class="progress" style="height:auto;">
+                                <div class="progress-bar bg-*" style="width:40%;padding: 1%;border-radius: 5%;background-color: #6930f6"><h5> {{ choice['Choice_Text'] }} </h5></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="container-fluid" style="margin-block-end: 2%">
+            <form method="post" action={{ url_for('logout') }}>
+            <button type="submit" name="logoutBtn" id="logoutbutton" class="btn btn-primary" style="float: right;background-color:#6930f6" >Log Out</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+</body>
+
+</html>
