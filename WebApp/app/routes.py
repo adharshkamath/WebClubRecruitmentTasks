@@ -13,11 +13,15 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('survey'))
     loginForm = LoginForm()
-    if loginForm.validate_on_submit():
+    if request.method == 'POST':
+        loginForm.email=request.form.get('email')
+        loginForm.password=request.form.get('password')
+        loginForm.remember=request.form.get('remember')
+    if loginForm.validate():        
         user = User.query.filter_by(email=loginForm.email.data).first()
         if user is None or not user.check_password(loginForm.password.data):
-            flash('Invalid username or password')
-            return render_template('login.html', title='Sign In', form=loginForm)
+            flash('Invalid username or password', category='danger')
+            return redirect(url_for('login.html'))
         login_user(user, remember=loginForm.remember.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -26,25 +30,42 @@ def login():
     return render_template('login.html', title='Sign In', form=loginForm)
 
 
-@app.route('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
         return redirect(url_for('survey'))
     signupform = SignUpForm()
-    if signupform.validate_on_submit():
+    if request.method == 'POST':
+        signupform.username.data=request.form['username']
+        signupform.email.data=request.form['email']
+        signupform.password.data=request.form['password']
+        #return redirect(url_for('login'))
+    if signupform.validate():
         user = User(username=signupform.username.data, email=signupform.email.data)
         user.set_password(signupform.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user!')
+        flash('Congratulations, you are now a registered user!', category='success')
         return redirect(url_for('login'))
+    #else: 
+       # flash("Sign Up Failed")
     return render_template('signup.html', form=signupform)
 
 
 @app.route('/results',methods=['GET','POST'])
 #@login_required
 def results():
-    
+    if request.method == 'POST':
+        choices=[]
+        with open("/home/adharsh/Desktop/WebSurvey/app/adminSurvey.json", "r") as jsonFile:
+            AddingVotesData = json.load(jsonFile)
+            for i in range(0,len(AddingVotesData)):
+                choices[i] = request.form[i]
+                AddingVotesData[i]["Choices"][choices[i]-1] = AddingVotesData[i]["Choices"][choices[i]-1] + 1
+        with open("/home/adharsh/Desktop/WebSurvey/app/adminSurvey.json", "w") as jsonFile:
+            json.dump(AddingVotesData, jsonFile)
+
+
     Data=json.loads(open('/home/adharsh/Desktop/WebSurvey/app/adminSurvey.json').read())
     votesData = []
     for i in range(0,len(Data)):
@@ -61,7 +82,7 @@ def survey():
 #    if current_user.is_elegible:
 #       flash('You have already taken the survey!')
 #       return redirect(url_for('results'))
-    
+    flash("Logged in Successfully!", category='success')
     Data=json.loads(open('/home/adharsh/Desktop/WebSurvey/app/adminSurvey.json').read())
     return render_template('survey.html', Data=Data)
 

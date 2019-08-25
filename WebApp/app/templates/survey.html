@@ -43,11 +43,21 @@
             margin: 2px;
         }
 
+   </style>
 
-    </style>
 </head>
 
 <body class='bg'>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+              {{message}}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
     <div style=" margin-top: 5%; margin-left: 20%;overflow-x: auto; word-wrap:break-word;box-shadow: 10px 10px 10px 8px #888888; width: 60%;opacity: 1;background-color: #fff";>
         <div class="container-fluid" style="width: 100%">
             <div class="page-header" style="width: 100%">
@@ -76,6 +86,7 @@
                         <h3> {{ question["Question_Text"]|e }} </h3>
                         <div class="list-group" style="width: inherit">
                             {% for choice in question['Choices'] %}
+                            
                             <button type="button" id= "{{ loop.index }}" class="list-group-item list-group-item-action">
                             {{ choice['Choice_Text'] }}
                             </button>
@@ -101,7 +112,7 @@
 
 
         <div class="container-fluid"  style="text-align: center">
-            <form action={{ url_for('results') }} method="POST" id="form">
+            <form action={{ url_for('results') }} method="POST" id="form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             <button id="submitButton" class="btn btn-primary" type="submit" style="height: inherit;margin-block-end: 5%;margin-inline-end: 10%; background-color: #6930f6;display: inline-block;">
        <h4 style="font-family: 'Courier New', Courier, monospace; padding: 2%; margin: 0%; border:0px; font-weight: 700; color: white;">Submit responses</h3>
     </button> </form>

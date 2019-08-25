@@ -58,13 +58,14 @@
         {% endif %}
       {% endwith %}
     <div class="login-form">
-        <form action="" name="form" method="POST">{{ form.csrf_token }}
+        <form action="" name="form" method="POST">
             <h2 class="text-center">Log in</h2>
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="E-mail" required="required">
+                
+                <input type="email" class="form-control" placeholder="E-mail" required="required" name="email">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="required">
+                <input type="password" class="form-control" placeholder="Password" required="required" name="password">{{ form.csrf_token }}
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block" style="background-color: #6930f6; border: none;">Log in</button>
