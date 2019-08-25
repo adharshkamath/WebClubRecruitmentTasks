@@ -44,8 +44,15 @@ def signup():
 @app.route('/results',methods=['GET','POST'])
 #@login_required
 def results():
+    
     Data=json.loads(open('/home/adharsh/Desktop/WebSurvey/app/adminSurvey.json').read())
-    return render_template('results.html', Data=Data)
+    votesData = []
+    for i in range(0,len(Data)):
+        votesData = votesData + [[ { "Votes":0 } for k in range(0, len(Data[i]["Choices"])) ]]
+    for i in range(0,len(Data)):
+        for j in range(0,len(Data[i]["Choices"])):
+            votesData[i][j]["Votes"] = Data[i]["Choices"][j]["Votes"]
+    return render_template('results.html', Data=Data, votesData=votesData)
 
 
 @app.route('/survey',methods=['GET','POST'])
@@ -54,6 +61,7 @@ def survey():
 #    if current_user.is_elegible:
 #       flash('You have already taken the survey!')
 #       return redirect(url_for('results'))
+    
     Data=json.loads(open('/home/adharsh/Desktop/WebSurvey/app/adminSurvey.json').read())
     return render_template('survey.html', Data=Data)
 

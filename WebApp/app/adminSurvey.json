@@ -5,27 +5,27 @@
         "Choices": [
             {
                 "Choice_Text": "Frank Underwood",
-                "Votes": 0
+                "Votes": 10
             },
             {
-                "Choice_Text": "Selina Meyers",
-                "Votes": 0
+                "Choice_Text": "Selina Meyer",
+                "Votes": 20
             },
             {
                 "Choice_Text": "Jake Peralta",
-                "Votes": 0
+                "Votes": 20
             },
             {
                 "Choice_Text": "Jon Snow",
-                "Votes": 0
+                "Votes": 20
             },
             {
                 "Choice_Text": "Walter White",
-                "Votes": 0
+                "Votes": 20
             },
             {
                 "Choice_Text": "Rachel Green",
-                "Votes": 0
+                "Votes": 10
             }
         ]
     },
