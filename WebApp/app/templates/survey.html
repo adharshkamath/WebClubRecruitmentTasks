@@ -48,45 +48,6 @@
         }
 
    </style>
-   <script type="text/javascript">
-   var responseData = {};
-var noOfQuestions = $("li").length;
-//console.log(noOfQuestions);
-for (let index = 1; index <= noOfQuestions; index++) {
-    responseData[index]={};
-    responseData[index]["Choice"] = 0;
-    //console.log(responseData);   
-    //console.log($("form"));
-  
-}
-var selectedOption = 1;
-var question = 1;
-
-$('button').on('click', function(e){
-    var selString = 'button#'+selectedOption+".list-group-item.list-group-item-action";
-    $(selString).css({"background-color":"#6930f6", "color":"#fff"});
-    selectedOption = (e.target.id); 
-    responseData[question]["Choice"] = selectedOption;  
-    var selString1 = 'button#'+selectedOption+".list-group-item.list-group-item-action";
-    $(selString1).css({"background-color":"#fff", "color":"#6930f6", "border":"2px solid #6930f6"});
-    console.log(responseData); 
-});
-
-$('a[data-toggle="tab"').on('click', function(e){
-    question = (e.target.id);
-    var selString = 'button#'+selectedOption+".list-group-item.list-group-item-action";
-    $(selString).css({"background-color":"#6930f6", "color":"#fff"});
-    selectedOption = responseData[question]["Choice"];  
-    var selString1 = 'button#'+selectedOption+".list-group-item.list-group-item-action";
-    $(selString1).css({"background-color":"#fff", "color":"#6930f6", "border":"2px solid #6930f6"});
-    console.log(responseData);     
-    
-});
-
-
-var submitButton = document.getElementById("submitButton");
-
-   </script>
 
 </head>
 
@@ -119,7 +80,7 @@ var submitButton = document.getElementById("submitButton");
                             <a href= '{{ "#" + question["Question_ID"] }}' data-toggle="tab" id= "{{ loop.index }}">Question {{ loop.index }}</a>
                         </li>
                     {% endif %}
-                    <input type="text" style="display: none;position:absolute;" name="{{ loop.index }}" id='{{ "#" + question["Question_ID"] + "#"}}' value="1">
+                    <input style="display: none;position:absolute;" name='{{ "#" + question["Question_ID"] }}' id='{{ "#" + question["Question_ID"] }}' value="2"> </input>
                     {% endfor %}
                 </ul>
             </div>
@@ -159,7 +120,7 @@ var submitButton = document.getElementById("submitButton");
         <div class="container-fluid"  style="text-align: center">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             <button id="submitButton" class="btn btn-primary" type="submit" style="height: inherit;margin-block-end: 5%;margin-inline-end: 10%; background-color: #6930f6;display: inline-block;">
-       <h4 style="font-family: 'Courier New', Courier, monospace; padding: 2%; margin: 0%; border:0px; font-weight: 700; color: white;">Submit responses</h3>
+       <h4 style="font-family: 'Courier New', Courier, monospace; padding: 2%; margin: 0%; border:0px; font-weight: 700; color: white;" id="submitButton">Submit responses</h3>
     </button> </form>
         </div>
     </div>

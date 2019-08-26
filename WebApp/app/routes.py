@@ -60,7 +60,7 @@ def signup():
 
 
 @app.route('/results',methods=['GET','POST'])
-@login_required
+#@login_required
 def results():
     if request.method == 'POST':
         if current_user.is_authenticated:
@@ -70,13 +70,11 @@ def results():
         choiceString = "a"
         with open("/home/adharsh/Desktop/webapp/app/adminSurvey.json", "r") as jsonFile:
             AddingVotesData = json.load(jsonFile)
-            for i in range(0,len(AddingVotesData)):
-                choiceString = request.form[str(i)]
-                choices[i] = int(choiceString)
+            for i in range(1,len(AddingVotesData)):
+                choices[i] = int(request.form["#" + str(i) + "q"])
                 AddingVotesData[i]["Choices"][choices[i]-1]["Votes"] = AddingVotesData[i]["Choices"][choices[i]-1]["Votes"] + 1
         with open("/home/adharsh/Desktop/webapp/app/adminSurvey.json", "w") as jsonFile:
             json.dump(AddingVotesData, jsonFile)
-        flash('successsssss', category="success")
     Data=json.loads(open('/home/adharsh/Desktop/webapp/app/adminSurvey.json').read())
     votesData = []
     for i in range(0,len(Data)):
@@ -88,11 +86,11 @@ def results():
 
 
 @app.route('/survey',methods=['GET','POST'])
-@login_required
+#@login_required
 def survey():
-    if current_user.surveyTaken:
-       flash('You have already taken the survey!')
-       return redirect(url_for('results'))
+#    if current_user.surveyTaken:
+#       flash('You have already taken the survey!')
+#       return redirect(url_for('results'))
     #flash("Logged in Successfully!", category='success')
     Data=json.loads(open('/home/adharsh/Desktop/webapp/app/adminSurvey.json').read())
     return render_template('survey.html', Data=Data)

@@ -47,7 +47,6 @@
 
 <body style="background: #f7f7f7;">
         
-    <div style=" margin-top: 5%; margin-left: 20%;overflow-x: auto; word-wrap: wrap none;box-shadow: 10px 10px 10px 8px #888888; width: 60%">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
           {% for message in messages %}
@@ -58,6 +57,7 @@
           {% endfor %}
         {% endif %}
       {% endwith %}
+    <div style=" margin-top: 5%; margin-left: 20%;overflow-x: auto; word-wrap: wrap none;box-shadow: 10px 10px 10px 8px #888888; width: 60%">
         <div class="container-fluid" style="width: 100%">
             <div class="page-header" style="width: 100%">
                 <span style="text-align: center"><h1>Responses</h1></span>
