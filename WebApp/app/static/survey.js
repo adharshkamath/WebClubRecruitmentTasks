@@ -32,11 +32,12 @@ $('a[data-toggle="tab"').on('click', function(e){
     
 });
 
+/*
 function addData(responseData, theForm) {
 
     for (let index = 0; index < responseData.length; index++) {
         var input = document.createElement('input');
-        input.type = 'text';
+        input.type = 'hidden';
         input.name = index;
         input.value = responseData[index]["Choice"];
         theForm.appendChild(input);    
@@ -48,4 +49,4 @@ function addData(responseData, theForm) {
 $('#form').submit(function(){ 
     addData(responseData, document.getElementById("form"));
     return true;
-}); 
+}); */

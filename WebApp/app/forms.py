@@ -25,5 +25,4 @@ class SignUpForm(Form):
 class LoginForm(Form):
     email = StringField('Email',validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=5)])
-    remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
