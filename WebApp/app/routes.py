@@ -60,7 +60,7 @@ def signup():
 
 
 @app.route('/results',methods=['GET','POST'])
-#@login_required
+@login_required
 def results():
     if request.method == 'POST':
         if current_user.is_authenticated:
@@ -86,11 +86,11 @@ def results():
 
 
 @app.route('/survey',methods=['GET','POST'])
-#@login_required
+@login_required
 def survey():
-#    if current_user.surveyTaken:
-#       flash('You have already taken the survey!')
-#       return redirect(url_for('results'))
+    if current_user.surveyTaken:
+       flash('You have already taken the survey!')
+       return redirect(url_for('results'))
     #flash("Logged in Successfully!", category='success')
     Data=json.loads(open('/home/adharsh/Desktop/webapp/app/adminSurvey.json').read())
     return render_template('survey.html', Data=Data)
