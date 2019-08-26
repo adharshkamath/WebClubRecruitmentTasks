@@ -86,7 +86,7 @@
                         <div class="list-group" style="width: inherit">
                             {% for choice in question['Choices'] %}
                             <div class="progress" style="height:auto;">
-                                    <div class="progress-bar bg-*" id="{{ 'loop.index' }}" style="width:{{ choice['Votes'] }}%"><h5>{{ choice['Choice_Text'] }} </h5></div>
+                                    <div class="progress-bar bg-*" id="{{ 'loop.index' }}" style="width:{{ choice['Votes'] }}%"><h5>{{ choice['Choice_Text'] }} - {{ choice['Votes'] }} </h5></div>
                             </div>
                             {% endfor %}
                         </div>
@@ -96,7 +96,7 @@
                     <div class="list-group" style="width: inherit">
                         {% for choice in question['Choices'] %}
                         <div class="progress" style="height:auto;">
-                                <div class="progress-bar bg-*" id="{{ loop.index }}" style="width:{{ choice['Votes'] }}%"><h5> {{ choice['Choice_Text'] }} </h5></div>
+                                <div class="progress-bar bg-*" id="{{ loop.index }}" style="width:{{ choice['Votes'] }}%"><h5> {{ choice['Choice_Text'] }} - {{ choice['Votes'] }}</h5></div>
                         </div>
                         {% endfor %}
                     </div>

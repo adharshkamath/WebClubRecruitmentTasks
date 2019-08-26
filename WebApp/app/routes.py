@@ -67,7 +67,6 @@ def results():
             current_user.surveyTaken = 1
             db.session.commit()
         choices=[1,2,3,4,5]
-        choiceString = "a"
         with open("/home/adharsh/Desktop/webapp/app/adminSurvey.json", "r") as jsonFile:
             AddingVotesData = json.load(jsonFile)
             for i in range(1,len(AddingVotesData)):
