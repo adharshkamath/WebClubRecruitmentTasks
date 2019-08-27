@@ -80,7 +80,7 @@
                             <a href= '{{ "#" + question["Question_ID"] }}' data-toggle="tab" id= "{{ loop.index }}">Question {{ loop.index }}</a>
                         </li>
                     {% endif %}
-                    <input style="display: none;position:absolute;" name='{{ "#" + question["Question_ID"] }}' id='{{ "#" + question["Question_ID"] }}' value="2"> </input>
+                    <input type="text" style="display: none;position:absolute;" name='{{ "#" + question["Question_ID"] }}' id='{{ "#" + question["Question_ID"] }}' value="2"> </input>
                     {% endfor %}
                 </ul>
             </div>

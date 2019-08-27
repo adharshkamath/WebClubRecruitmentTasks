@@ -17,7 +17,8 @@ $('button').on('click', function(e){
     $(selString1).css({"background-color":"#fff", "color":"#6930f6", "border":"2px solid #6930f6"});
     console.log(responseData); 
     var choice = responseData[question]["Choice"];
-    document.getElementById("#" + question + "q").attr('value', choice)
+    $("#" + question + "q").attr('value', this.id);
+    document.getElementById("#" + question + "q").setAttribute("value", this.id);
 });
 
 $('a[data-toggle="tab"').on('click', function(e){
