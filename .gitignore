@@ -1,0 +1,3 @@
+*.pyc
+WebApp/app/__pycache__/*
+*.db

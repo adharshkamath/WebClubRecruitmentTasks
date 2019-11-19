@@ -67,14 +67,14 @@ def results():
             current_user.surveyTaken = 1
             db.session.commit()
         choices=[1,2,3,4,5]
-        with open("/home/adharsh/Desktop/webapp/app/adminSurvey.json", "r") as jsonFile:
+        with open("./adminSurvey.json", "r") as jsonFile:
             AddingVotesData = json.load(jsonFile)
             for i in range(1,len(AddingVotesData)):
                 choices[i] = int(request.form["#" + str(i) + "q"])
                 AddingVotesData[i]["Choices"][choices[i]-1]["Votes"] = AddingVotesData[i]["Choices"][choices[i]-1]["Votes"] + 1
-        with open("/home/adharsh/Desktop/webapp/app/adminSurvey.json", "w") as jsonFile:
+        with open("./adminSurvey.json", "w") as jsonFile:
             json.dump(AddingVotesData, jsonFile)
-    Data=json.loads(open('/home/adharsh/Desktop/webapp/app/adminSurvey.json').read())
+    Data=json.loads(open('./adminSurvey.json').read())
     votesData = []
     for i in range(0,len(Data)):
         votesData = votesData + [[ { "Votes":0 } for k in range(0, len(Data[i]["Choices"])) ]]
@@ -91,7 +91,7 @@ def survey():
        flash('You have already taken the survey!')
        return redirect(url_for('results'))
     #flash("Logged in Successfully!", category='success')
-    Data=json.loads(open('/home/adharsh/Desktop/webapp/app/adminSurvey.json').read())
+    Data=json.loads(open('./adminSurvey.json').read())
     return render_template('survey.html', Data=Data)
 
 
